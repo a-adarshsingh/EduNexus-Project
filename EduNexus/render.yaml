@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: edunexus
+    runtime: python
+    plan: free
+    buildCommand: pip install -r backend/requirements.txt
+    startCommand: python app.py
+    healthCheckPath: /api/health
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.8
+      - key: SECRET_KEY
+        generateValue: true
+      - key: DATABASE_URL        # paste a free Postgres URL (Neon / Supabase / Render Postgres)
+        sync: false
+      - key: GEMINI_API_KEY      # free key from https://aistudio.google.com/apikey
+        sync: false
+      - key: GROQ_API_KEY        # optional backup: https://console.groq.com/keys
+        sync: false
+      - key: ADMIN_KEY           # optional: to read feedback
+        sync: false

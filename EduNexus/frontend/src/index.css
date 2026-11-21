@@ -1,0 +1,26 @@
+@tailwind base;@tailwind components;@tailwind utilities;
+:root{--bg:#F3F0FF;--card:#fff;--ink:#1E1B3A;--muted:#7A7799;--line:#E6E1FA;--brand:#7C4DFF;--brand2:#2F6BFF;--soft:#F1ECFF;
+--sidebar:linear-gradient(180deg,#8B5CF6,#6D3FD0);--hero:linear-gradient(120deg,#7C4DFF,#5B6CFF 60%,#22C3EE);--shadow:0 10px 30px rgba(124,77,255,.12)}
+[data-theme=dark]{--bg:#0B0A1A;--card:#15132E;--ink:#F2F0FF;--muted:#A9A5CC;--line:#2A2752;--brand:#8B5CF6;--brand2:#22D3EE;--soft:#1D1A40;
+--sidebar:linear-gradient(180deg,#14122E,#0E0C22);--hero:linear-gradient(120deg,#3B1F8F,#1B1B5E 55%,#0F4C6B);--shadow:0 10px 40px rgba(139,92,246,.18)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'Poppins',system-ui,sans-serif}
+[data-theme=dark] body{background:radial-gradient(900px 500px at 80% -10%,rgba(139,92,246,.18),transparent),var(--bg)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow)}
+.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.6rem 1.1rem;border-radius:14px;font-weight:600;border:0;cursor:pointer;color:#fff;background:linear-gradient(135deg,var(--brand),var(--brand2));transition:.2s}
+.btn:hover{filter:brightness(1.1);transform:translateY(-1px)}.btn:disabled{opacity:.5;cursor:not-allowed;transform:none}
+.btn-ghost{display:inline-flex;align-items:center;gap:.5rem;padding:.5rem .9rem;border-radius:14px;font-weight:500;cursor:pointer;background:var(--soft);color:var(--ink);border:1px solid var(--line)}
+.btn-ghost:hover{border-color:var(--brand)}
+.input{width:100%;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:.65rem .9rem;color:var(--ink);outline:none;font:inherit}
+.input:focus{border-color:var(--brand)}
+.chip{display:inline-block;padding:.15rem .6rem;border-radius:999px;font-size:.72rem;font-weight:600;background:var(--soft);color:var(--brand)}
+.orb{position:relative;width:var(--s,260px);height:var(--s,260px);border-radius:50%}
+.orb::before{content:"";position:absolute;inset:-22%;border-radius:50%;background:radial-gradient(circle,rgba(34,211,238,.55),rgba(139,92,246,.35) 50%,transparent 70%);filter:blur(26px);animation:glow 4s ease-in-out infinite}
+.orb-core{position:absolute;inset:0;border-radius:50%;background:conic-gradient(from 0deg,#22d3ee,#3b82f6,#8b5cf6,#ec4899,#14b8a6,#22d3ee);box-shadow:inset 0 0 40px rgba(255,255,255,.55),inset -20px -30px 60px rgba(0,0,0,.25),0 0 0 3px rgba(255,255,255,.25)}
+.orb-core::after{content:"";position:absolute;inset:5%;border-radius:50%;background:radial-gradient(circle at 35% 28%,rgba(255,255,255,.8),transparent 42%),radial-gradient(circle at 58% 62%,rgba(16,185,129,.85),transparent 38%),radial-gradient(circle at 70% 30%,rgba(236,72,153,.5),transparent 45%)}
+.orb[data-state=idle] .orb-core{animation:spin 20s linear infinite}
+.orb[data-state=listening] .orb-core{animation:pulse .9s ease-in-out infinite}
+.orb[data-state=listening]::before{animation:glow .9s ease-in-out infinite}
+.orb[data-state=thinking] .orb-core{animation:spin 2s linear infinite}
+.orb[data-state=speaking] .orb-core{animation:speak .45s ease-in-out infinite alternate}
+@keyframes spin{to{transform:rotate(360deg)}}@keyframes glow{50%{opacity:.55;transform:scale(1.08)}}
+@keyframes pulse{50%{transform:scale(1.07)}}@keyframes speak{from{transform:scale(.97)}to{transform:scale(1.06)}}
